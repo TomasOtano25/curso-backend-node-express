@@ -5,56 +5,59 @@ const ProductsService = require('../services/products.service');
 const router = express.Router();
 const service = new ProductsService();
 
-router.get('/', (req, res) => {
-  const products = service.find();
+router.get('/', async (req, res) => {
+  const products = await service.find();
   res.json(products);
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
-  const product = service.findOne(id);
+  const product = await service.findOne(id);
   res.status(200).json(product);
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const body = req.body;
 
-  const newProduct = service.create(body);
+  const newProduct = await service.create(body);
 
   res.status(201).json({ message: 'created', data: newProduct });
 });
 
-router.patch('/:id', (req, res) => {
-  const { id } = req.params;
-  const body = req.body;
+router.patch('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
 
-  const product = service.update(id, body);
+    const product = await service.update(id, body);
 
-  res.json({
-    message: 'update partial',
-    data: product,
-  });
+    res.json({
+      message: 'update partial',
+      data: product,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
-  const productId = service.delete(id);
+  const productId = await service.delete(id);
   res.json({
     message: 'update partial',
     productId,
   });
 });
 
-router.get('/:id/details', (req, res) => {
+router.get('/:id/details', async (req, res) => {
   const { id } = req.params;
 
-  res.json({
-    id,
-    name: 'Product 1',
-    price: 1000,
-    description: 'Este es mi primer producto',
-  });
+  const product = await service.findOne(id);
+
+  res.json(product);
 });
 
 module.exports = router;
