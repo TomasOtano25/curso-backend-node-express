@@ -17,22 +17,24 @@ router.get('/', (req, res) => {
   res.json(products);
 });
 
-router.get('/filter', (req, res) => {
-  res.send('Yo soy un filter');
-});
-
-// endpoints: simple
-router.get('/:productId', (req, res) => {
-  const { productId } = req.params;
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
 
   res.json({
-    id: productId,
+    id,
     name: 'Product 1',
     price: 1000,
   });
 });
 
-// Detalles de producto
+router.post('/', (req, res) => {
+  const body = req.body;
+  res.json({
+    message: 'created',
+    data: body,
+  });
+});
+
 router.get('/:id/details', (req, res) => {
   const { id } = req.params;
 
