@@ -16,9 +16,8 @@ npm docs boom
 
 ## Rutas
 
-
-(https://still-scrubland-51772.herokuapp.com)[https://still-scrubland-51772.herokuapp.com]
+()[https://still-scrubland-51772.herokuapp.com]
 
 ### API
-(https://still-scrubland-51772.herokuapp.com/api/v1/products)[https://still-scrubland-51772.herokuapp.com/api/v1/products]
 
+()[https://still-scrubland-51772.herokuapp.com/api/v1/products]
