@@ -16,8 +16,8 @@ npm docs boom
 
 ## Rutas
 
-(Pagina Web)[https://still-scrubland-51772.herokuapp.com]
+[Ruta de acceso en heroku](https://still-scrubland-51772.herokuapp.com)
 
 ### API
 
-()[https://still-scrubland-51772.herokuapp.com/api/v1/products]
+[API en heroku](https://still-scrubland-51772.herokuapp.com/api/v1/products)
